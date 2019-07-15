@@ -7,6 +7,8 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import { War } from './Games/War';
 
+const production = true;
+
 class Game {
     title: string = '';
     url: string = '';
@@ -43,7 +45,7 @@ class Index extends React.Component {
 class App extends React.Component {
     render() {
         return (
-            <Router basename={!window.location.hostname.includes('localhost') ? '/card-games/' : '/'}>
+            <Router basename={production ? '/card-games/' : '/'}>
                 <Route path="/" exact component={Index} />
                 {
                     games.map(game =>
